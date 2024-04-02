@@ -1,0 +1,79 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "description",
+    "version" : "1.0.0",
+    "title" : "Api Documentation"
+  },
+  "host" : "localhost",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "CartController"
+  } ],
+  "schemes" : [ "http", "https" ],
+  "paths" : {
+    "/store/getItemList" : {
+      "get" : {
+        "tags" : [ "CartController" ],
+        "operationId" : "getItems",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "category",
+          "in" : "query",
+          "required" : false,
+          "type" : "string",
+          "default" : "all"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "$ref" : "#/definitions/JSONObject"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    },
+    "/store/koko" : {
+      "post" : {
+        "tags" : [ "CartController" ],
+        "operationId" : "addKoko",
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "",
+            "schema" : {
+              "type" : "string"
+            }
+          }
+        },
+        "security" : [ {
+          "api_key" : [ ]
+        } ]
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "api_key" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header"
+    }
+  },
+  "definitions" : {
+    "JSONObject" : { }
+  }
+}
